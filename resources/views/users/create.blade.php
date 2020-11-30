@@ -1,6 +1,7 @@
 @extends('base')
 
 @section('content')
+
     <h1>Create New Users</h1>
 
     <div class="row">

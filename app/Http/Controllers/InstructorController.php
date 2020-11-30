@@ -8,8 +8,8 @@ use App\Instructor;
 class InstructorController extends Controller
 {
     public function index() {
-        $instructors = Instructor::get();
-        return view('instructors.index', compact('instructors'));
+        $instructors = Instructor::Latest()->paginate(10);
+        return view('instructors.index', ['instructors'=>$instructors]);
     }
 
     public function create() {
@@ -23,8 +23,26 @@ class InstructorController extends Controller
             'rating' => 'required|numeric',
         ]);
 
-        Instructor::create($request->all());
+        Instructor::create([
+            'user_id' => $request['user_id'],
+            'aoe' => $request['aoe'],
+            'rating' => $request['rating'],
+        ]);
+
 
         return redirect('/instructors')->with('info', 'New instructor has been added.');
+    }
+    public function edit($id) {
+        $instructor = Instructor::find($id);
+
+        return view('instructors.edit', ['instructor'=>$instructor]);
+    }
+
+    public function update(Request $request, $id) {
+        $instructor = Instructor::find($id);
+
+        $instructor->update($request->all());
+
+        return redirect('/instructors')->with('info', "The record of $instructor->user_id $instructor->aoe has been updated. ");
     }
 }

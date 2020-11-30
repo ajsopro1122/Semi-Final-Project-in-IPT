@@ -1,23 +1,24 @@
 @extends('base')
 
 @section('content')
-
-    <h1>Create New Instructor</h1>
+    <h1>Edit User {{ $learner->user_id }}, {{ $learner->levels }}</h1>
 
     <div class="row">
         <div class="col-md-5">
-            {!! Form::open(['url'=>'/instructors', 'method'=>'post']) !!}
+            {!! Form::model($learner, ['url'=>"/learners/$learner->id", 'method'=>'patch']) !!}
 
-            @include('instructors._form')
+            @include('learners._form')
 
             <div class="form-group">
                 <button class="btn btn-primary float-right">
-                    Create Instructor
+                    Update Learner
                 </button>
             </div>
 
             {!! Form::close() !!}
+
         </div>
+
         <div class="col-md-7">
             @include('errors')
         </div>
