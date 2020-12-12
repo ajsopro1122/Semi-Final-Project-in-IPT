@@ -44,4 +44,6 @@ class LearnerController extends Controller
 
         return redirect('/learners')->with('info', "The record of $learner->user_id $learner->levels has been updated. ");
     }
+
+
 }

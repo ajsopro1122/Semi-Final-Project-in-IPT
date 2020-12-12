@@ -20,6 +20,7 @@ Route::post('/users', 'UserController@store');
 Route::patch('/users/{id}', 'UserController@update');
 Route::get('users/create', 'UserController@create');
 Route::get('/users/edit/{id}', 'UserController@edit');
+Route::delete('/users', 'UserController@delete');
 
 Route::get('/instructors', 'InstructorController@index');
 Route::post('/instructors', 'InstructorController@store');
