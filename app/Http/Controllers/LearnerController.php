@@ -45,5 +45,13 @@ class LearnerController extends Controller
         return redirect('/learners')->with('info', "The record of $learner->user_id $learner->levels has been updated. ");
     }
 
+    public function delete(Request $request){
+        $learnerId = $request['learner_id'];
+        $learner = learner::find($learnerId);
+        $name = $learner->user->fname . " " . $learner->user->lname;
+        $learner->delete();
+        return  redirect('/learners')->with('info', "The record of $name has been deleted successfully.");
+    }
+
 
 }

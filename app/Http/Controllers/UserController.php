@@ -57,6 +57,6 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect('/users')->with('info', "The user $name has ben updated");
+        return redirect('/users')->with('info', "The user $name has ben delated");
     }
 }

@@ -9,7 +9,7 @@
         'novice' => 'Novice',
         'intermediate' => 'Intermediate',
         'advanced' => 'Advanced'
-    ], null, ['class'=>'form-control ', 'placeholder'=>'Select Level']) }}
+    ], null, ['class'=>'form-control ', 'placeholder'=>'Select Level    ']) }}
 </div>
 
 <div class="form-group">

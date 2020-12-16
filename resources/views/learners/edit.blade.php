@@ -1,20 +1,26 @@
 @extends('base')
 
 @section('content')
-    <div class="modal fade" id="deleteLearnerModal" tabindex="-1" aria-labelledby="deleteLearnerModalLabel" aria-hidden="true">
+    <!-- Modal -->
+    <div class="modal fade" id="deletelearnerModal" tabindex="-1" aria-labelledby="deletelearnerModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="deleteLearnerModalLabel">Delete Learner</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h5 class="modal-title" id="deletelearnerModalLabel">Delete learner - {{$learner->user->lname . ", " . $learner->user->fname}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
             </div>
+            {!! Form::open(['url'=>'/learners', 'method'=>'delete']) !!}
             <div class="modal-body">
-            ...
+            Are you sure you want to delete this learner?
+            {{ Form::hidden('learner_id', $learner->id) }}
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Delete Learner</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-danger">Delete learner</button>
             </div>
+            {!! Form::close() !!}
         </div>
         </div>
     </div>
@@ -29,8 +35,8 @@
 
             <div class="form-group">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteLearnerModal">
-                    Launch demo modal
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletelearnerModal">
+                    Delete Learner
                 </button>
                 <button class="btn btn-primary float-right">
                     Update Learner
